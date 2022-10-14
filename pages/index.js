@@ -60,6 +60,10 @@ export default function Home() {
         </div>
       </main>
 
+      <Link href="/posts/second-post">
+        <a>두번째 글</a>
+      </Link>
+
       <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
