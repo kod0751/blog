@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -10,6 +11,13 @@ export default function Home() {
       </Head>
 
       <main>
+        <img src="/images/profile.jpg" alt="profile" />
+        <Image
+          src="/images/profile.jpg"
+          alt="profile"
+          width={166}
+          height={166}
+        />
         <h1 className="title">
           Read this Post{" "}
           <Link href="/posts/first-post">
