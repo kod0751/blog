@@ -1,18 +1,25 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import Layout, { siteTitle } from "../components/layout";
-import { getSortedPostsData } from "../lib/posts";
+// import { getSortedPostsData } from "../lib/posts";
 import utilStyles from "../styles/utils.module.css";
 
-export async function getServerSideProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const allPostsData = getSortedPostsData();
+//   return {
+//     props: {
+//       allPostsData,
+//     },
+//   };
+// }
 
-export default function Home({ allPostsData }) {
+export default function Home() {
+  const [allPostsData, setAllPostsData] = useState([]);
+  useEffect(() => {
+    fetch("/api/posts")
+      .then((res) => res.json())
+      .then((data) => setAllPostsData(data.allPostsData));
+  }, []);
   return (
     <Layout home>
       <Head>
