@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
+import { getPostData } from "../../lib/posts";
 import Date from "../../components/Date";
 import utilStyles from "../../styles/utils.module.css";
 import { MDXRemote } from "next-mdx-remote";
@@ -8,10 +8,17 @@ import { useRouter } from "next/router";
 import CodeBlock from "../../components/CodeBlock";
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  // const paths = getAllPostIds();
+  const paths = [
+    {
+      params: {
+        id: "ssg-ssr",
+      },
+    },
+  ];
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
