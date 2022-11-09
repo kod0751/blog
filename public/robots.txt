@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blog-6hk2hp1fa-kod0751.vercel.app
+
+# Sitemaps
+Sitemap: https://blog-6hk2hp1fa-kod0751.vercel.app/sitemap.xml
