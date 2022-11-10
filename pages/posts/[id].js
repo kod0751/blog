@@ -6,6 +6,12 @@ import utilStyles from "../../styles/utils.module.css";
 import { MDXRemote } from "next-mdx-remote";
 import { useRouter } from "next/router";
 import CodeBlock from "../../components/CodeBlock";
+// import Button from "../../components/Button";
+import dynamic from "next/dynamic";
+
+const Button = dynamic(() => import("../../components/Button"), {
+  loading: () => <div>Loading...</div>,
+});
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -32,17 +38,6 @@ export async function getStaticProps({ params, preview }) {
   };
 }
 
-const Button = ({ children }) => {
-  return (
-    <button
-      className="bg-black dark:bg-white text-lg text-teal-200 dark:text-teal-700 rounded-lg px-5"
-      onClick={() => alert(`thanks to ${children}`)}
-    >
-      {children}
-    </button>
-  );
-};
-
 const components = { Button, CodeBlock };
 
 export default function FirstPost({ postData }) {
@@ -55,8 +50,10 @@ export default function FirstPost({ postData }) {
     <Layout>
       <article>
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}></div>
-        <Date dateString={postData.date} />
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+        <br />
         {postData.contentHtml && (
           <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
         )}
